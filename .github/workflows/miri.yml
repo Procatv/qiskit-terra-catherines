@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   miri:
-    if: github.repository_owner == 'Qiskit'
+    if: github.repository_owner == 'procatv'
     name: Miri
     runs-on: ubuntu-latest
     env:
