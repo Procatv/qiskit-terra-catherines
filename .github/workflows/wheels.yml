@@ -96,6 +96,8 @@ jobs:
           components: llvm-tools-preview
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.19.2
+        env:
+          CIBW_SKIP: 'pp* cp36-* cp37-* *musllinux* *amd64 *x86_64'
       - name: Install requirements 
         run: pip install -r requirements-dev.txt
       - name: Runs tests
