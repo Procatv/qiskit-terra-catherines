@@ -2,7 +2,8 @@
 name: Wheel Builds
 on:
   push:
-    branches: ['run_stestr_']
+    tags:
+      - '*'
 jobs:
   build_wheels:
     name: Build wheels
