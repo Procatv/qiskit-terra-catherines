@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   coverage:
-    if: github.repository_owner == 'Qiskit'
+    if: github.repository_owner == 'procatv'
     name: Coverage
     runs-on: ubuntu-latest
     env:
@@ -48,6 +48,14 @@ jobs:
           RUSTFLAGS: "-Cinstrument-coverage"
           LLVM_PROFILE_FILE: "qiskit-%p-%m.profraw"
           SETUPTOOLS_ENABLE_FEATURES: "legacy-editable"
+
+      - name: Bulid Rust Project
+        run: cargo build
+        env:
+            CARGO_INCREMENTAL: 0
+            RUSTFLAGS: "-Cinstrument-coverage"
+            LLVM_PROFILE_FILE: "qiskit-%p-%m.profraw"
+            SETUPTOOLS_ENABLE_FEATURES: "legacy-editable"
 
       - name: Generate unittest coverage report
         run: |
